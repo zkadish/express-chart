@@ -21,10 +21,10 @@ https.get(coinListUrl, res => {
       const coin = arr.filter((c) => {
         return Number(c.SortOrder) === sortNum;
       })[0];
+      if (!coin) return a;
       a.push(coin);
       return a;
     }, [])
-    // console.log(coins);
   });
 });
 
@@ -32,7 +32,7 @@ https.get(coinListUrl, res => {
  * api list of first 100 coins form cryptocompare
  */
 router.get('/coins', function(req, res, next) {
-  res.send(coins.slice(0, 100));
+  res.send(coins.slice(0, 20));
 });
 
 module.exports = router;
